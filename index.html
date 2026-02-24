@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SESAJEN - Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: radial-gradient(circle at top left,#3b1f4f,#1e1028);
+    overflow:hidden;
+}
+
+/* Animated gradient glow */
+body::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#a855f7,transparent 70%);
+    top:-200px;
+    left:-200px;
+    filter:blur(120px);
+    animation:moveGlow 8s infinite alternate ease-in-out;
+}
+
+@keyframes moveGlow{
+    0%{transform:translate(0,0);}
+    100%{transform:translate(100px,80px);}
+}
+
+.container{
+    width:100%;
+    max-width:420px;
+    padding:20px;
+    z-index:10;
+}
+
+/* Glass Card */
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+    padding:40px 35px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    animation:fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.logo{
+    text-align:center;
+    color:white;
+    margin-bottom:30px;
+}
+
+.logo h1{
+    font-size:40px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.logo p{
+    font-size:14px;
+    opacity:.7;
+}
+
+/* Floating input */
+.input-group{
+    position:relative;
+    margin-bottom:25px;
+}
+
+.input-group input{
+    width:100%;
+    padding:15px 15px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.12);
+    color:white;
+    font-size:14px;
+    outline:none;
+    border:1px solid transparent;
+    transition:.3s;
+}
+
+.input-group label{
+    position:absolute;
+    left:15px;
+    top:15px;
+    color:#c4b5fd;
+    font-size:13px;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    border:1px solid #a855f7;
+    box-shadow:0 0 10px #a855f7;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label{
+    top:-8px;
+    left:12px;
+    font-size:11px;
+    background:#1e1028;
+    padding:0 6px;
+    border-radius:6px;
+}
+
+/* Hint Box */
+.hint-box {
+    background: rgba(168, 85, 247, 0.1);
+    border-left: 4px solid #a855f7;
+    padding: 12px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    color: #c4b5fd;
+    font-size: 12px;
+}
+
+.hint-box strong {
+    color: #ec4899;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Button */
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#a855f7,#ec4899);
+    color:white;
+    font-weight:600;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 25px rgba(168,85,247,0.4);
+}
+
+.links{
+    margin-top:25px;
+    text-align:center;
+}
+
+.links a{
+    color:#c4b5fd;
+    font-size:13px;
+    text-decoration:none;
+    display:block;
+    margin:8px 0;
+    transition:.3s;
+}
+
+.links a:hover{
+    color:white;
+}
+
+.footer{
+    position:fixed;
+    bottom:15px;
+    font-size:12px;
+    color:rgba(255,255,255,.4);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <div class="logo">
+            <h1>SESAJEN</h1>
+            <p>Sistem Sewa Jasa Online</p>
+        </div>
+
+        <div class="hint-box">
+            <strong>💡 Hint Login:</strong>
+            Username: <code>admin</code> | Password: <code>12345</code>
+        </div>
+
+        <form onsubmit="handleLogin(event)">
+
+            <div class="input-group">
+                <input type="text" id="username" required placeholder=" ">
+                <label>Username</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" required placeholder=" ">
+                <label>Password</label>
+            </div>
+
+            <button type="submit">LOG IN</button>
+
+        </form>
+
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+            <a href="Regis.html">Create Account</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">www.sesajen.com</div>
+
+<script>
+function handleLogin(e){
+    e.preventDefault();
+    
+    // Ambil value dari input
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    // Logika pengecekan sederhana
+    if(user === "admin" && pass === "12345") {
+        alert("Selamat Datang di SESAJEN 🔥");
+        // Kamu bisa mengarahkan ke halaman dashboard di sini
+        // window.location.href = "Dashboard.html";
+    } else {
+        alert("Username atau Password salah! Silakan coba lagi.");
+    }
+}
+</script>
+
+</body>
+</html>
