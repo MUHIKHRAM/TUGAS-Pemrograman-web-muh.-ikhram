@@ -208,7 +208,7 @@ button:hover{
         </form>
 
         <div class="links">
-            <p>Sudah punya akun? <a href="Login.html">Login di sini</a></p>
+            <p>Sudah punya akun? <a href="index.html">Login di sini</a></p>
         </div>
 
     </div>
@@ -225,8 +225,8 @@ function handleRegister(e){
     // Notifikasi simulasi berhasil daftar
     alert("Akun berhasil dibuat untuk " + name + "!\nSilakan login kembali.");
     
-    // Setelah klik OK di alert, pindah ke halaman login
-    window.location.href = "Login.html";
+    // Diperbarui ke index.html agar tidak error 404
+    window.location.href = "index.html";
 }
 </script>
 
